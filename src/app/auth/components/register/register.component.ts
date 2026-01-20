@@ -8,7 +8,6 @@ import { combineLatest, Observable } from 'rxjs';
 import { AuthStateInterface } from '../../types/authState.interface';
 import { CommonModule } from '@angular/common';
 import { selectIsSubmitting, selectValidationErrors } from '../../store/reducers';
-import { AuthService } from '../../services/auth.service';
 import { BackendErrorsInterface } from '../../../shared/types/backendErrors.interface';
 import { BackendErrorMessages } from "../../../shared/components/backendErrorMessages/backendErrorMessages.component";
 
@@ -42,6 +41,14 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {}
 
+  /**
+   * Handles form submission for user registration.
+   * 
+   * Logs the current form values to the console, constructs a registration request
+   * object from the form data, and dispatches the register action to the store.
+   * 
+   * @returns {void}
+   */
   onSubmit() {
     console.log('form', this.form.getRawValue());
     const request: RegisterRequestInterface = {
